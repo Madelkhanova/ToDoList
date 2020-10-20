@@ -21,9 +21,10 @@ class ToDoListAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val todo = todolist.get(position)
         holder.titleText.text = todo.title
-        holder.dataText.text = todo.data
+        holder.statusText.text = todo.status
+        holder.categoryText.text = todo.category
         holder.itemView.setOnClickListener {
-            listener?.itemClick(
+            listener.itemClick(
                 position,
                 todo
             )
@@ -36,7 +37,8 @@ class ToDoListAdapter(
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var titleText: TextView = view.findViewById(R.id.title)
-        var dataText: TextView = view.findViewById(R.id.data)
+        var statusText: TextView = view.findViewById(R.id.status)
+        var categoryText: TextView = view.findViewById(R.id.category)
 
     }
 

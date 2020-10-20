@@ -1,8 +1,3 @@
 package com.example.todolist
 
-class ToDo(title: String, data: String, description: String) {
-    var title: String = title
-    var data: String = data
-    var description: String = description
-
-}
+data class ToDo(var id:Int, var title: String, var description: String, var status:String, var category:String, var duration:String)
