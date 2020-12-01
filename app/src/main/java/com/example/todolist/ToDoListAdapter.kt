@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 class ToDoListAdapter(
-    val todolist: ArrayList<ToDo>,
+    var todolist: MutableList<ToDo>,
     val context: Context,
     val listener: ItemClickListener
 ) :
@@ -21,14 +22,14 @@ class ToDoListAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val todo = todolist.get(position)
         holder.titleText.text = todo.title
-        holder.statusText.text = todo.status
-        holder.categoryText.text = todo.category
+        holder.statusText.text = todo.completed.toString()
         holder.itemView.setOnClickListener {
             listener.itemClick(
                 position,
                 todo
             )
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -37,8 +38,7 @@ class ToDoListAdapter(
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var titleText: TextView = view.findViewById(R.id.title)
-        var statusText: TextView = view.findViewById(R.id.status)
-        var categoryText: TextView = view.findViewById(R.id.category)
+        var statusText: TextView = view.findViewById(R.id.completed)
 
     }
 

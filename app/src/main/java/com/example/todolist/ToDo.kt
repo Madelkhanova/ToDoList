@@ -1,3 +1,16 @@
 package com.example.todolist
 
-data class ToDo(var id:Int, var title: String, var description: String, var status:String, var category:String, var duration:String)
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
+data class ToDo
+    (
+    @SerializedName("userId")
+    var userId: Int,
+    @SerializedName("id")
+    var id: Int,
+    @SerializedName("title")
+    var title: String,
+    @SerializedName("completed")
+    var completed: Boolean,
+) : Serializable
